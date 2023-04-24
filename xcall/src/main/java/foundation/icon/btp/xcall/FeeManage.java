@@ -72,5 +72,5 @@ public interface FeeManage {
      * @return the sum of the protocol fee and the relay fee
      */
     @External(readonly=true)
-    BigInteger getFee(String _net, boolean _rollback);
+    BigInteger getFee(String protocol, String _net, boolean _rollback);
 }
