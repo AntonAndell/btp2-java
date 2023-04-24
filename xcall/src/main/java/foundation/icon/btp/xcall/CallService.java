@@ -54,7 +54,7 @@ public interface CallService {
      * @param _nsn The network serial number of the BTP message
      */
     @EventLog(indexed=3)
-    void CallMessageSent(Address _from, String _to, BigInteger _sn, BigInteger _nsn);
+    void CallMessageSent(Address _from, String _to, BigInteger _sn);
 
     /**
      * Notifies that a response message has arrived for the `_sn` if the request was a two-way message.

@@ -97,7 +97,7 @@ class CallServiceImplTest implements CSIntegrationTest {
     }
 
     private BigInteger getFee(String net, boolean rollback) {
-        return feeManager.getFee(net, rollback);
+        return feeManager.getFee("btp", net, rollback);
     }
 
     private void accumulateFee(BigInteger totalFee, BigInteger protocolFee) {
@@ -124,7 +124,6 @@ class CallServiceImplTest implements CSIntegrationTest {
             assertEquals(sampleAddress, el.get_from());
             assertEquals(to.toString(), el.get_to());
             assertEquals(sn, el.get_sn());
-            assertEquals(MockBMCIntegrationTest.mockBMC.getNetworkSn(), el.get_nsn());
         }));
         BigInteger fee = getFee(to.net(), false);
         assertEquals(forwardFee.add(protocolFee), fee);
@@ -235,7 +234,6 @@ class CallServiceImplTest implements CSIntegrationTest {
             assertEquals(caller, el.get_from());
             assertEquals(to.toString(), el.get_to());
             assertEquals(sn, el.get_sn());
-            assertEquals(MockBMCIntegrationTest.mockBMC.getNetworkSn(), el.get_nsn());
         }));
         BigInteger fee = getFee(to.net(), false);
         assertEquals(forwardFee.add(protocolFee), fee);
@@ -293,7 +291,6 @@ class CallServiceImplTest implements CSIntegrationTest {
             assertEquals(sampleAddress, el.get_from());
             assertEquals(fakeTo.toString(), el.get_to());
             assertEquals(sn, el.get_sn());
-            assertEquals(MockBMCIntegrationTest.mockBMC.getNetworkSn(), el.get_nsn());
         }));
         BigInteger fee = getFee(to.net(), true);
         accumulateFee(fee, protocolFee);
